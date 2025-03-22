@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Conference ticket generator</title>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <h1 id = 'site-identity'>
+    <img src="assets/images/logo-mark.svg" alt="Main Logo" width='25'/>
+    Coding Conf
+  </h1>
+
+  <section class = 'bw-stage' id = 'form'>
+    <form method = 'POST' id = 'generate-ticket-form'>
+
+      <h2>Your Journey to Coding Conf 2025 Starts Here!</h2>
+
+      <p class="secondary">Secure your spot at next year's biggest coding conference.</p>
+
+      <section class="form-field" err = 'File too large. Please upload a photo under 500KB.'>
+        <label for="avatar">Upload Avatar</label>
+        <div class = 'file'>
+          <img src = './assets/images/icon-upload.svg' width = '40' id = 'tmp-avatar'/>
+          <input
+          type        = "file"
+          name        = "avatar"
+          id          = "avatar"
+          placeholder = "Drag and drop or click to upload"
+          accept      = ".png,.jpg,.jpeg" required />
+          <p class="secondary" id = 'no-file-uploaded'>
+            Drag and drop or click to upload
+          </p>
+          <div class="secondary" id = 'file-uploaded' style = 'display:none;justify-content:space-around;align-items:center;'>
+            <button type = 'button' id = 'remove-image'>Remove Image</button>
+            <button type = 'button' id = 'change-image'>Change Image</button>
+          </div>
+        </div>
+          <p class="secondary x-small">
+          <img src = './assets/images/icon-info.svg' width = '12'/>
+           Upload your photo (JPG or PNG, max size: 500KB).</p>
+      </section>
+      
+      <section class = 'form-field' err = 'Unvalid Fullname'>
+        <label for="fullname">Full Name</label>
+        <input type="text" name="fullname" id="fullname" required />
+      </section>
+
+      <section class = 'form-field' err = 'Unvalid e-mail address'>
+        <label for="email">Email Address</label>
+        <input
+          type        = "email"
+          name        = "email"
+          id          = "email"
+          placeholder = 'example@email.com' required />
+      </section>
+
+      <section class="form-field" err = 'Unvalid Github username'>
+        <label for="github-username">GitHub Username</label>
+        <input
+          type        = "text"
+          name        = "github-username"
+          id          = "github-username"
+          placeholder = '@yourusername' required />
+      </section>
+
+      <button type="submit" id = 'submit-form'>
+        Generate My Ticket
+      </button>
+
+    </form>
+  </section>
+
+  <section class = 'bw-stage' id = 'ticket' style='display:none'>
+
+    <h2>Congrats, <span id = 'sender-fullname'>Loay Ali</span>! Your ticket is ready.</h2>
+
+    <h3 class = 'secondary'>
+      We've emailed your ticket to <span id="sender-email">loay.ali.emam.ghonem@gmail.com</span> and will send updates in the run up to the event.
+    </h3>
+
+    <section id = 'ticket-body'>
+		<header>
+			<img src = 'assets/images/logo-mark.svg' width = '50' alt = 'Site Logo' />
+			<h4>Coding Conf</h4>
+			<span class = 'secondary'>Jan 31, 2025 / Austin, TX</span>
+		</header>
+		<span id = 'hash-number'>#01609</span>
+		<div id = 'ticket-personal-info'>
+			<img src = '#' width = '80' alt = 'ticket holder image' />
+			<strong id = 'ticket-full-name'>Testing Here</strong>
+			<p class = 'secondary'>
+				<img src = 'assets/images/icon-github.svg' alt = "Github's Logo" width = '20' />
+				<span id = 'ticket-github-username'>
+					@Testing_Username
+				</span>
+		</div>
+    </section>
+
+  </section>
+  
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+</html>
