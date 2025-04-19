@@ -1,0 +1,41 @@
+.bw-bigbang-particle {
+
+	position:absolute;
+
+	width:10px;
+	height:10px;
+
+	border-radius: 50%;
+
+	box-shadow: 0 0 20px currentColor;
+}
+
+.bw-bigbang-container {
+
+	position:relative;
+
+	width:10px;
+	height:10px;
+
+	animation: big-bang 4.0s ease-out forwards;
+}
+
+@keyframes big-bang {
+
+	0% {
+		opacity:1;
+		width:10px;
+		height:10px;
+	}
+
+	80% {
+		width:400px;
+		height:400px;
+	}
+
+	100% {
+		opacity: 0;
+		width:400px;
+		height:400px;
+	}
+}

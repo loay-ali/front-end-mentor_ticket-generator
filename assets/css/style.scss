@@ -14,6 +14,11 @@
 	--secondary-color: #bbbacb;
 }
 
+@keyframes button-loading {
+	0% { background-position-x:0%;}
+	100% { background-position-x:100%;}
+}
+
 button {
 	color: #320918;
 	background: #f67464;
@@ -28,6 +33,36 @@ button {
 	max-width:400px;
 
 	cursor:pointer;
+	
+	transition: all 0.35s ease;
+	
+	overflow:hidden;
+
+	&:hover {
+		
+	}
+
+	&.is-loading {
+	
+		opacity: 0.5;
+	
+		position:relative;
+	
+		&::after {
+		
+			content: '';
+			
+			position:absolute;
+			bottom:0;
+			left:0;
+			width:100%;
+			height:4px;
+			
+			background:linear-gradient(to right,#0000 50%,#fff 0) 0 0/10% 100%;
+			
+			animation: button-loading 3.0s linear infinite;
+		}
+	}
 }
 
 .bw-stage {
@@ -41,11 +76,18 @@ button {
 	}
 }
 
+@keyframes fullname-animation {
+	0% { background-position-x:0;}
+	100% { background-position-x:10000px;}
+}
+
 #sender-fullname {
 
 	background: linear-gradient(to right,#f67464,#FFF);
 	background-clip:text;
 	-webkit-text-fill-color: transparent;
+	
+	animation: fullname-animation 60.0s ease-in-out infinite;
 }
 
 #sender-email {
@@ -67,6 +109,23 @@ button {
 	
 	height:250px;
 	width:537px;
+	
+	-webkit-filter: drop-shadow(0px 5px 20px #555);
+	filter: drop-shadow(0px 5px 20px #555);
+	
+	perspective: 750px;
+	transition:all 1.0s ease;
+	
+	transform:rotateY(180deg);
+	opacity:0;
+	
+	backface-visibility: hidden;
+	
+	&.active {
+	
+		transform:rotateY(0deg);
+		opacity:1;
+	}
 	
 	#ticket-github-username,.secondary {
 		font-size:18px;

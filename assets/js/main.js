@@ -4,33 +4,50 @@ document.body.onload = function() {
 	document.getElementById('submit-form').onclick = function(e) {
 		e.preventDefault();
 
-		let faults = false;
-		const form = document.querySelector("#form > form");
+		const btn = e.currentTarget;
+		btn.className = btn.className +' is-loading';
+		
+		setTimeout(() => {
+			
+			let faults = false;
+			const form = document.querySelector("#form > form");
 
-		for( element of form.elements ) {
-			if( element.nodeName == 'INPUT' ) {
-				let parentElement = element.parentElement;
-				if( parentElement.classList.contains('form-field') == false )
-					parentElement = parentElement.parentElement;
-				if( element.validity.valueMissing ) {
-					parentElement.setAttribute('class','form-field error');
-					faults = true;
-				}else {
-					parentElement.setAttribute('class','form-field');
+			for( element of form.elements ) {
+				if( element.nodeName == 'INPUT' ) {
+					let parentElement = element.parentElement;
+					if( parentElement.classList.contains('form-field') == false )
+						parentElement = parentElement.parentElement;
+					if( element.validity.valueMissing ) {
+						parentElement.setAttribute('class','form-field error');
+						faults = true;
+					}else {
+						parentElement.setAttribute('class','form-field');
+					}
 				}
 			}
-		}
 
-		if( faults == false ) {
+			if( faults == false ) {
 
-			document.getElementById('ticket').style.display = 'block';
-			document.getElementById('form').style.display = 'none';
+				document.getElementById('ticket').style.display = 'block';
+				document.getElementById('form').style.display = 'none';
 
-			document.getElementById('sender-fullname').innerHTML = document.getElementById('fullname').value;
-			document.getElementById('sender-email').innerHTML = document.getElementById('email').value;
-			document.getElementById('ticket-full-name').innerHTML = document.getElementById('fullname').value;
-			document.getElementById('ticket-github-username').innerHTML = "@"+ document.getElementById('github-username').value;
-		}
+				document.getElementById('sender-fullname').innerHTML = document.getElementById('fullname').value;
+				document.getElementById('sender-email').innerHTML = document.getElementById('email').value;
+				document.getElementById('ticket-full-name').innerHTML = document.getElementById('fullname').value;
+				document.getElementById('ticket-github-username').innerHTML = "@"+ document.getElementById('github-username').value;
+			
+				setTimeout(() => {
+					
+					document.getElementById('ticket-body').className += ' active';
+
+					create_firework(document.getElementById('fireworks-1'));
+					create_firework(document.getElementById('fireworks-2'));
+				},100);
+			}else {
+				
+				btn.className = btn.className.replace('is-loading','');
+			}
+		},2000);
 	};
 
 	//on Avatar Upload
